@@ -15,15 +15,6 @@ module.exports = (config) => {
             // keep comms on a new channel so we don't flood chat channel
             this.chat = new this.OCF.Chat(this.parent.channel + '.$' + 'typingIndicator');
 
-            // forward events via broadcast
-            this.chat.on('$typingIndicator.startTyping', (event) => {
-                this.parent.trigger('$typingIndicator.startTyping', event);
-            });
-
-            this.chat.on('$typingIndicator.stopTyping', (event) => {
-                this.parent.trigger('$typingIndicator.stopTyping', event);
-            });
-
             // will set Chat.typing.isTyping to false immediately
             this.isTyping = false;
 
